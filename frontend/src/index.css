@@ -1,111 +1,98 @@
 :root {
-  --text: #6b6375;
-  --text-h: #08060d;
-  --bg: #fff;
-  --border: #e5e4e7;
-  --code-bg: #f4f3ec;
-  --accent: #aa3bff;
-  --accent-bg: rgba(170, 59, 255, 0.1);
-  --accent-border: rgba(170, 59, 255, 0.5);
-  --social-bg: rgba(244, 243, 236, 0.5);
-  --shadow:
-    rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
-
-  --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --heading: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --mono: ui-monospace, Consolas, monospace;
-
-  font: 18px/145% var(--sans);
-  letter-spacing: 0.18px;
-  color-scheme: light dark;
-  color: var(--text);
-  background: var(--bg);
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-
-  @media (max-width: 1024px) {
-    font-size: 16px;
-  }
+  --night-900: #060B19;
+  --night-800: #0A1128;
+  --night-700: #001F54;
+  --night-600: #034078;
+  --night-500: #1282A2;
+  --night-400: #1E96C8;
+  --night-300: #64DFDF;
+  --texto-claro: #cbd5e1;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --text: #9ca3af;
-    --text-h: #f3f4f6;
-    --bg: #16171d;
-    --border: #2e303a;
-    --code-bg: #1f2028;
-    --accent: #c084fc;
-    --accent-bg: rgba(192, 132, 252, 0.15);
-    --accent-border: rgba(192, 132, 252, 0.5);
-    --social-bg: rgba(47, 48, 58, 0.5);
-    --shadow:
-      rgba(0, 0, 0, 0.4) 0 10px 15px -3px, rgba(0, 0, 0, 0.25) 0 4px 6px -2px;
-  }
-
-  #social .button-icon {
-    filter: invert(1) brightness(2);
-  }
-}
+* { box-sizing: border-box; margin: 0; padding: 0; }
 
 body {
-  margin: 0;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  background: #fff;
+  color: var(--night-800);
 }
 
-#root {
-  width: 1126px;
-  max-width: 100%;
+a { text-decoration: none; }
+h1, h2, h3 { font-family: 'Press Start 2P', monospace; line-height: 1.5; }
+
+/* ---------- Cabeçalho ---------- */
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(10, 17, 40, 0.95);
+  backdrop-filter: blur(8px);
+  border-bottom: 2px solid var(--night-600);
+  color: #fff;
+}
+.header-inner {
+  max-width: 1100px;
   margin: 0 auto;
-  text-align: center;
-  border-inline: 1px solid var(--border);
-  min-height: 100svh;
+  padding: 0 16px;
+  height: 64px;
   display: flex;
-  flex-direction: column;
-  box-sizing: border-box;
+  align-items: center;
+  justify-content: space-between;
+}
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 12px;
+  color: var(--night-300);
+}
+.logo:hover { color: #fff; }
+.logo-icone {
+  width: 32px;
+  height: 32px;
+  background: var(--night-700);
+  border: 1px solid var(--night-400);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+}
+.menu {
+  display: flex;
+  gap: 24px;
+  font-family: 'Space Mono', monospace;
+  font-size: 12px;
+  letter-spacing: 0.05em;
+}
+.menu a { color: var(--texto-claro); }
+.menu a:hover,
+.menu a.active { color: var(--night-300); }
+
+.btn-idioma {
+  padding: 6px 12px;
+  background: var(--night-700);
+  color: var(--night-300);
+  font-family: 'Space Mono', monospace;
+  font-size: 12px;
+  border: 1px solid var(--night-400);
+  cursor: pointer;
+}
+.btn-idioma:hover { background: var(--night-600); }
+
+@media (max-width: 768px) {
+  .menu { display: none; } /* o menu de celular vem depois */
 }
 
-h1,
-h2 {
-  font-family: var(--heading);
-  font-weight: 500;
-  color: var(--text-h);
-}
+/* ---------- Páginas e rodapé ---------- */
+.page { max-width: 900px; margin: 0 auto; padding: 48px 24px; min-height: 60vh; }
 
-h1 {
-  font-size: 56px;
-  letter-spacing: -1.68px;
-  margin: 32px 0;
-  @media (max-width: 1024px) {
-    font-size: 36px;
-    margin: 20px 0;
-  }
-}
-h2 {
-  font-size: 24px;
-  line-height: 118%;
-  letter-spacing: -0.24px;
-  margin: 0 0 8px;
-  @media (max-width: 1024px) {
-    font-size: 20px;
-  }
-}
-p {
-  margin: 0;
-}
-
-code,
-.counter {
-  font-family: var(--mono);
-  display: inline-flex;
-  border-radius: 4px;
-  color: var(--text-h);
-}
-
-code {
-  font-size: 15px;
-  line-height: 135%;
-  padding: 4px 8px;
-  background: var(--code-bg);
+.footer {
+  text-align: center;
+  padding: 32px 24px;
+  background: var(--night-900);
+  border-top: 2px solid var(--night-700);
+  color: #94a3b8;
+  font-family: 'Space Mono', monospace;
+  font-size: 12px;
 }
