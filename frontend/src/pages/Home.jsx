@@ -42,8 +42,6 @@ export default function Home() {
     'Python',
     'JavaScript',
     'React',
-    'PHP',
-    'SQL',
     'Git',
     'HTML & CSS',
   ]

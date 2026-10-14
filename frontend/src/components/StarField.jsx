@@ -15,7 +15,7 @@ export default function StarField() {
       stars = Array.from({ length: 70 }, () => ({
         x: Math.random() * canvas.width,
         y: Math.random() * canvas.height,
-        size: Math.random() < 0.8 ? 1.5 : 2.5,
+        size: Math.random() < 0.8 ? 3 : 5,
         alpha: Math.random(),
         speed: 0.01 + Math.random() * 0.02,
       }))

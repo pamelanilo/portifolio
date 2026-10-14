@@ -1,8 +1,3 @@
-
-/* =========================================
-   PALETA E TEMAS
-========================================= */
-
 :root {
   --night-900: #060B19;
   --night-800: #0A1128;
@@ -41,7 +36,7 @@
   --transition: 0.25s ease;
 }
 
-/* MODO CLARO: preservar o visual original */
+/* MODO CLARO*/
 
 :root[data-theme="light"] {
   color-scheme: light;
@@ -64,7 +59,7 @@
   --control-border: #034078;
 }
 
-/* MODO ESCURO: contraste reforçado */
+/* MODO ESCURO */
 
 :root[data-theme="dark"] {
   color-scheme: dark;
@@ -94,9 +89,7 @@
   );
 }
 
-/* =========================================
-   BASE
-========================================= */
+
 
 * {
   box-sizing: border-box;
@@ -151,9 +144,7 @@ main,
     color var(--transition);
 }
 
-/* =========================================
-   ANIMAÇÕES GERAIS
-========================================= */
+
 
 @keyframes home-entrar {
   from {

@@ -201,7 +201,7 @@ export default function SkillsGlobe({
       ctx.fill()
 
       ctx.lineWidth = 1
-      ctx.strokeStyle = color
+      ctx.strokeStyle = '#4656a3'
 
       for (const line of GRID) {
         let previous = project(line[0])
@@ -209,8 +209,7 @@ export default function SkillsGlobe({
         for (let i = 1; i < line.length; i += 1) {
           const current = project(line[i])
 
-          ctx.globalAlpha =
-            (previous.z + current.z) / 2 > 0 ? 0.28 : 0.07
+          ctx.globalAlpha = (previous.z + current.z) / 2 > 0 ? 0.75 : 0.25
 
           ctx.beginPath()
           ctx.moveTo(previous.x, previous.y)
