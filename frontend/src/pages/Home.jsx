@@ -3,6 +3,7 @@ import StarField from '../components/StarField'
 import SobreResumo from '../components/SobreResumo'
 import { useIdioma } from '../context/IdiomaContext'
 import ContactForm from '../components/ContactForm'
+import { FaWhatsapp, FaGithub, FaLinkedinIn } from 'react-icons/fa'
 
 const projetos = [
   {
@@ -189,6 +190,7 @@ export default function Home() {
         </div>
       </section>
 
+      
       <section
         className="secao-portfolio contato-secao"
         id="contato"
@@ -206,34 +208,40 @@ export default function Home() {
         </p>
 
         <div className="contato-links">
-          <ContactForm />
+          <a
+            href="https://wa.me/5531994682576"
+            target="_blank"
+            rel="noreferrer"
+            aria-label="Conversar pelo WhatsApp"
+          >
+            <FaWhatsapp />
+            <span>WhatsApp</span>
+          </a>
+
           <a
             href="https://github.com/pamelanilo"
             target="_blank"
             rel="noreferrer"
+            aria-label="Ver GitHub"
           >
-            GitHub ↗
+            <FaGithub />
+            <span>GitHub</span>
           </a>
 
           <a
-            href="https://www.linkedin.com/in/pamela-fernandes-nilo-747958244/"
+            href="https://www.linkedin.com/in/SEU-PERFIL/"
             target="_blank"
             rel="noreferrer"
+            aria-label="Ver LinkedIn"
           >
-            LinkedIn ↗
+            <FaLinkedinIn />
+            <span>LinkedIn</span>
           </a>
         </div>
 
-        <p className="aviso-contato">
-          {ingles
-            ? 'Update the contact links with your actual profiles.'
-            : 'Personalize os links de contato com seus perfis reais.'}
-        </p>
-
-        <a href="/#inicio" className="voltar-topo">
-          {ingles ? '↑ BACK TO TOP' : '↑ VOLTAR AO TOPO'}
-        </a>
+        <ContactForm />
       </section>
+
     </>
   )
 }

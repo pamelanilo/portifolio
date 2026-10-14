@@ -1,4 +1,3 @@
-
 import { useRef, useState } from 'react'
 import emailjs from '@emailjs/browser'
 import { useIdioma } from '../context/IdiomaContext'
@@ -14,8 +13,8 @@ export default function ContactForm() {
         nome: 'Name',
         seuNome: 'Your name',
         email: 'Email',
-        mensagem: 'Message',
         seuEmail: 'you@example.com',
+        mensagem: 'Message',
         escrever: 'Write your message...',
         enviar: 'SEND MESSAGE',
         enviando: 'SENDING...',
@@ -26,36 +25,61 @@ export default function ContactForm() {
         nome: 'Nome',
         seuNome: 'Seu nome',
         email: 'E-mail',
-        mensagem: 'Mensagem',
         seuEmail: 'voce@exemplo.com',
+        mensagem: 'Mensagem',
         escrever: 'Escreva sua mensagem...',
         enviar: 'ENVIAR MENSAGEM',
         enviando: 'ENVIANDO...',
         sucesso: 'Mensagem enviada com sucesso!',
-        erro: 'Não foi possível enviar. Tente novamente.',
+        erro: 'Não foi possível enviar. Confira a configuração e tente novamente.',
       }
 
-  async function handleSubmit(event) {
-    event.preventDefault()
-    setStatus('sending')
+ 
+    async function handleSubmit(event) {
+      event.preventDefault()
+      setStatus('sending')
 
-    try {
-      await emailjs.sendForm(
-        import.meta.env.VITE_EMAILJS_SERVICE_ID,
-        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
-        formRef.current,
-        {
-          publicKey: import.meta.env.VITE_EMAILJS_PUBLIC_KEY,
+      try {
+        const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID
+        const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID
+        const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+        const confirmationTemplateId =
+          import.meta.env.VITE_EMAILJS_AUTOREPLY_TEMPLATE_ID
+
+        await emailjs.sendForm(
+          serviceId,
+          templateId,
+          formRef.current,
+          { publicKey }
+        )
+
+        // Tenta enviar a confirmação para quem preencheu o formulário.
+        try {
+          if (!confirmationTemplateId) {
+            throw new Error('ID do template de confirmação não configurado.')
+          }
+
+          await emailjs.sendForm(
+            serviceId,
+            confirmationTemplateId,
+            formRef.current,
+            { publicKey }
+          )
+        } catch (confirmationError) {
+          console.error(
+            'A mensagem foi enviada, mas a confirmação por e-mail falhou:',
+            confirmationError
+          )
         }
-      )
 
-      setStatus('success')
-      formRef.current.reset()
-    } catch (error) {
-      console.error('Erro ao enviar mensagem:', error)
-      setStatus('error')
+        setStatus('success')
+        formRef.current.reset()
+      } catch (error) {
+        console.error('Erro ao enviar mensagem:', error)
+        setStatus('error')
+      }
     }
-  }
+
 
   return (
     <form

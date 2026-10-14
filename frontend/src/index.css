@@ -230,7 +230,6 @@ h1, h2, h3 {
   background: var(--page-bg);
 }
 
-/* Fundos das seções acompanham o tema ativo. O hero fica azul-marinho. */
 #root,
 main,
 .page,
@@ -568,4 +567,34 @@ main,
   color: var(--accent);
   font-family: 'Space Mono', monospace;
   font-size: 11px;
+}
+
+.contato-links {
+  position: static;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 24px;
+  width: 100%;
+  margin: 28px auto;
+}
+
+.contato-links a {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--text-color, inherit);
+  text-decoration: none;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.contato-links a svg {
+  width: 24px;
+  height: 24px;
+}
+
+.contato-links a:hover {
+  transform: translateY(-3px);
+  opacity: 0.75;
 }
