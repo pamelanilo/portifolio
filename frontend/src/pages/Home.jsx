@@ -1,8 +1,9 @@
-
+import { Link } from 'react-router-dom'
 import StarField from '../components/StarField'
 import SobreResumo from '../components/SobreResumo'
 import { useIdioma } from '../context/IdiomaContext'
 import ContactForm from '../components/ContactForm'
+import SkillsGlobe from '../components/SkillsGlobe'
 import { FaWhatsapp, FaGithub, FaLinkedinIn } from 'react-icons/fa'
 
 const projetos = [
@@ -36,8 +37,20 @@ export default function Home() {
   const { idioma } = useIdioma()
   const ingles = idioma === 'en'
 
+  const habilidades = [
+    'Java',
+    'Python',
+    'JavaScript',
+    'React',
+    'PHP',
+    'SQL',
+    'Git',
+    'HTML & CSS',
+  ]
+
   return (
     <>
+      {/* HERO */}
       <section className="hero" id="inicio">
         <StarField />
 
@@ -71,10 +84,12 @@ export default function Home() {
         </svg>
       </section>
 
-      <div>
+      {/* SOBRE RESUMIDO */}
+      <div id="sobre">
         <SobreResumo />
       </div>
 
+      {/* PROJETOS */}
       <section className="secao-portfolio" id="projetos">
         <p className="rotulo-secao">
           {ingles ? '02 / PROJECTS' : '02 / PROJETOS'}
@@ -116,8 +131,17 @@ export default function Home() {
             </article>
           ))}
         </div>
+
+        <div className="portfolio-ver-mais">
+          <Link to="/projetos" className="link-seta">
+            {ingles
+              ? 'Explore all projects →'
+              : 'Explore todos os projetos →'}
+          </Link>
+        </div>
       </section>
 
+      {/* EXPERIÊNCIAS */}
       <section className="secao-portfolio" id="experiencias">
         <p className="rotulo-secao">
           {ingles ? '03 / EXPERIENCE' : '03 / EXPERIÊNCIAS'}
@@ -160,37 +184,50 @@ export default function Home() {
             </p>
           </article>
         </div>
+
+        <div className="portfolio-ver-mais">
+          <Link to="/experiencias" className="link-seta">
+            {ingles
+              ? 'Discover my experiences →'
+              : 'Conheça minhas experiências →'}
+          </Link>
+        </div>
       </section>
 
+      {/* HABILIDADES */}
+   
       <section className="secao-portfolio" id="habilidades">
         <p className="rotulo-secao">
           {ingles ? '04 / SKILLS' : '04 / HABILIDADES'}
         </p>
 
         <h2>
-          {ingles ? 'Skills and technologies' : 'Habilidades e tecnologias'}
+          {ingles
+            ? 'Skills and technologies'
+            : 'Habilidades e tecnologias'}
         </h2>
 
-        <div className="grade-habilidades">
-          {[
-            'Java',
-            'Python',
-            'JavaScript',
-            'React',
-            'PHP',
-            'SQL',
-            'Git',
-            'HTML & CSS',
-          ].map((item) => (
-            <div className="habilidade-card" key={item}>
-              <span aria-hidden="true">&lt;/&gt;</span>
-              {item}
-            </div>
-          ))}
+        <p className="introducao-secao">
+          {ingles
+            ? 'The technologies I explore while building projects and developing my skills.'
+            : 'As tecnologias que exploro enquanto construo projetos e desenvolvo minhas habilidades.'}
+        </p>
+
+        <div className="home-skills-globe">
+          <SkillsGlobe />
+        </div>
+
+        <div className="portfolio-ver-mais">
+          <Link to="/sobre#habilidades" className="link-seta">
+            {ingles
+              ? 'Explore my skills →'
+              : 'Conheça minhas habilidades →'}
+          </Link>
         </div>
       </section>
 
-      
+
+      {/* CONTATO */}
       <section
         className="secao-portfolio contato-secao"
         id="contato"
@@ -241,7 +278,6 @@ export default function Home() {
 
         <ContactForm />
       </section>
-
     </>
   )
 }

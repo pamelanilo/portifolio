@@ -5,7 +5,6 @@ import Home from './pages/Home'
 import Sobre from './pages/Sobre'
 import Projetos from './pages/Projetos'
 import Experiencias from './pages/Experiencias'
-import Contato from './pages/Contato'
 import { IdiomaProvider } from './context/IdiomaContext'
 
 export default function App() {
@@ -17,7 +16,6 @@ export default function App() {
           <Route path="/sobre" element={<Sobre />} />
           <Route path="/projetos" element={<Projetos />} />
           <Route path="/experiencias" element={<Experiencias />} />
-          <Route path="/contato" element={<Contato />} />
         </Route>
       </Routes>
     </IdiomaProvider>

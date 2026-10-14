@@ -157,6 +157,15 @@ h1, h2, h3 {
   to   { transform: translateY(8px); }
 } 
 
+.home-skills-globe {
+  width: 100%;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 25px auto;
+  overflow: hidden;
+}
 
 .hero-onda {
   position: absolute;
@@ -597,4 +606,27 @@ main,
 .contato-links a:hover {
   transform: translateY(-3px);
   opacity: 0.75;
+}
+
+.portfolio-ver-mais {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+.portfolio-ver-mais .link-seta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--cor-destaque, #b99aff);
+  font-weight: 700;
+  text-decoration: none;
+  transition:
+    opacity 0.2s ease,
+    transform 0.2s ease;
+}
+
+.portfolio-ver-mais .link-seta:hover {
+  opacity: 0.8;
+  transform: translateX(4px);
 }
