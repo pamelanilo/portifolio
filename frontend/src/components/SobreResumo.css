@@ -13,15 +13,13 @@
   justify-items: center;
 }
 
-/* Foto redonda que "sai" do céu e invade a seção, como no portfólio de referência */
 .foto-perfil {
   position: relative;
-  z-index: 30; /* acima da onda branca (20) */
-  justify-self: start; /* no celular, fica à esquerda e não cobre a Luna */
+  z-index: 2;
   width: var(--foto);
   height: var(--foto);
-  margin-top: calc(var(--foto) * -0.5); /* sobe sobre o hero */
-  margin-bottom: 40px; /* espaço para a etiqueta "É EU!" */
+  margin-top: 0;
+  margin-bottom: 24px;
 }
 .foto-perfil img {
   width: 100%;
@@ -99,6 +97,42 @@
 .canto-tr { top: 8px;    right: 8px; border-top-width: 3px;    border-right-width: 3px; }
 .canto-bl { bottom: 8px; left: 8px;  border-bottom-width: 3px; border-left-width: 3px; }
 .canto-br { bottom: 8px; right: 8px; border-bottom-width: 3px; border-right-width: 3px; }
+
+
+.revelar .foto-perfil,
+.revelar .sobre-texto,
+.revelar .cartao-pixel {
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity 0.7s ease,
+    transform 0.7s ease;
+}
+
+.revelar.visivel .foto-perfil,
+.revelar.visivel .sobre-texto,
+.revelar.visivel .cartao-pixel {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.revelar.visivel .sobre-texto {
+  transition-delay: 0.15s;
+}
+
+.revelar.visivel .cartao-pixel {
+  transition-delay: 0.3s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .revelar .foto-perfil,
+  .revelar .sobre-texto,
+  .revelar .cartao-pixel {
+    transition: none;
+    transform: none;
+  }
+}
+
 
 /* Tela larga: foto | texto | personagem lado a lado */
 @media (min-width: 900px) {

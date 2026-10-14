@@ -2,6 +2,7 @@
 import { Link } from 'react-router-dom'
 import StarField from '../components/StarField'
 import SobreResumo from '../components/SobreResumo'
+import ContactForm from '../components/ContactForm'
 
 const projetos = [
   {
@@ -64,7 +65,7 @@ export default function Home() {
         </svg>
       </section>
 
-      <div id="sobre">
+      <div className="revelar-rolagem">
         <SobreResumo />
       </div>
 

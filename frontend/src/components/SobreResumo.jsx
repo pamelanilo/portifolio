@@ -2,10 +2,15 @@ import { Link } from 'react-router-dom'
 import './SobreResumo.css'
 import fotoPerfil from '../assets/foto-perfil.jpg'
 import personagem from '../assets/luna-sprites.webp'
+import useReveal from '../hooks/useReveal'
+
+
 
 export default function SobreResumo() {
+  const { ref, visible } = useReveal()
   return (
-    <section className="sobre">
+    <section className={`sobre revelar ${visible ? 'visivel' : ''}`} id="sobre" ref={ref}
+>
       <div className="sobre-grid">
         <figure className="foto-perfil">
           <img src={fotoPerfil} alt="Foto da Pamela" />
