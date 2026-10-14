@@ -1,8 +1,8 @@
 import { Link } from 'react-router-dom'
 import './SobreResumo.css'
 import fotoPerfil from '../assets/foto-perfil.jpg'
-import personagem from '../assets/luna-sprites.webp'
 import useReveal from '../hooks/useReveal'
+import Luna from './Luna'
 
 
 
@@ -44,7 +44,7 @@ export default function SobreResumo() {
           <span className="canto canto-tr" />
           <span className="canto canto-bl" />
           <span className="canto canto-br" />
-          <img src={personagem} alt="Minha personagem em pixel art" />
+          <Luna />
         </div>
       </div>
     </section>

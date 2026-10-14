@@ -136,17 +136,21 @@
 
 /* Tela larga: foto | texto | personagem lado a lado */
 @media (min-width: 900px) {
-  .sobre-grid {
-    grid-template-columns: var(--foto) 1fr 340px;
-    gap: 48px;
-    align-items: start;
-    justify-items: stretch;
-  }
+   
+.sobre-grid {
+  grid-template-columns: var(--foto) minmax(0, 1fr) 340px;
+  column-gap: 90px;
+  row-gap: 32px;
+  align-items: center;
+  justify-items: stretch;
+}
 
-  .foto-perfil {
-    margin-top: 0;
-    margin-bottom: 0;
-  }
+.foto-perfil {
+  margin-top: 0;
+  margin-bottom: 0;
+  align-self: center;
+}
+
 
   .sobre-texto {
     text-align: left;
