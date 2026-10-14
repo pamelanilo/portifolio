@@ -1,4 +1,6 @@
+
 :root {
+  /* Paleta original do portfólio: manter! */
   --night-900: #060B19;
   --night-800: #0A1128;
   --night-700: #001F54;
@@ -7,32 +9,54 @@
   --night-400: #1E96C8;
   --night-300: #64DFDF;
   --texto-claro: #cbd5e1;
+  --header-bg: rgba(255, 255, 255, 0.96);
+  --header-text: #0A1128;
+
+  /* Cores que mudam conforme o tema */
+  --page-bg: #ffffff;
+  --text-color: #0A1128;
+  --muted-color: #475569;
+  --card-bg: #f8fafc;
+  --border-color: #cbd5e1;
+  --accent: #087e9e;
+
+  --hero-bg: linear-gradient(
+    180deg,
+    #060B19,
+    #0A1128,
+    #001F54
+  );
+}
+
+/* Tema claro */
+:root[data-theme="light"] {
+  color-scheme: light;
 
   --page-bg: #ffffff;
   --text-color: #0A1128;
   --muted-color: #475569;
   --card-bg: #f8fafc;
   --border-color: #cbd5e1;
---accent: #087e9e;
---hero-bg: linear-gradient(180deg, #f4f8ff, #dcecff);
+  --accent: #087e9e;
 }
 
+/* Tema escuro */
 :root[data-theme="dark"] {
-  --page-bg: #060B19;
+  color-scheme: dark;
+  --header-bg: rgba(6, 11, 25, 0.96);
+  --header-text: #f1f5f9;
+  --page-bg: #000000;
   --text-color: #f1f5f9;
   --muted-color: #cbd5e1;
   --card-bg: #0A1128;
   --border-color: #26364f;
   --accent: #64DFDF;
---hero-bg: linear-gradient(
-  to bottom,
-  #060B19,
-  #0A1128,
-  #001F54
-);
 }
 
+
+
 body {
+  margin: 0;
   min-height: 100vh;
   overflow-x: hidden;
   overflow-y: auto;
@@ -41,6 +65,7 @@ body {
   color: var(--text-color);
   transition: background-color 0.2s, color 0.2s;
 }
+
 
 html {
   scroll-behavior: smooth;
@@ -61,15 +86,19 @@ h1, h2, h3 {
 }
 
 /* ---------- Cabeçalho ---------- */
+
 .header {
   position: sticky;
   top: 0;
   z-index: 50;
-  background: rgba(10, 17, 40, 0.95);
+  background: var(--header-bg);
   backdrop-filter: blur(8px);
-  border-bottom: 2px solid var(--night-600);
-  color: #fff;
+  border-bottom: 2px solid var(--border-color);
+  color: var(--header-text);
+  transition: background-color 0.2s, color 0.2s;
 }
+
+
 .header-inner {
   max-width: 1100px;
   margin: 0 auto;
@@ -105,7 +134,7 @@ h1, h2, h3 {
   font-size: 12px;
   letter-spacing: 0.05em;
 }
-.menu a { color: var(--texto-claro); }
+.menu a { color: var(--header-text); }
 .menu a:hover,
 .menu a.active { color: var(--night-300); }
 
@@ -120,40 +149,48 @@ h1, h2, h3 {
 }
 .btn-idioma:hover { background: var(--night-600); }
 
-@media (max-width: 768px) {
-  .menu { display: none; } /* o menu de celular vem depois */
-}
-
 /* ---------- Páginas e rodapé ---------- */
 .page { max-width: 900px; margin: 0 auto; padding: 48px 24px; min-height: 60vh; }
 
-.onda-frente {
-  width: 100%;
-  z-index: 20;
-  fill: #fff;
-  animation: onda-respirar 6s ease-in-out infinite alternate;
-}
 @keyframes onda-respirar {
   from { transform: translateY(0); }
   to   { transform: translateY(8px); }
 } 
 
+
+.hero-onda {
+  position: absolute;
+  z-index: 1;
+  bottom: -1px;
+  left: 0;
+  display: block;
+  width: 100%;
+  height: 90px;
+  fill: var(--page-bg);
+  pointer-events: none;
+}
+
+
+
 .footer {
   text-align: center;
   padding: 32px 24px;
-  background: var(--night-900);
-  border-top: 2px solid var(--night-700);
-  color: #94a3b8;
+  background: var(--card-bg);
+  border-top: 2px solid var(--border-color);
+  color: var(--muted-color);
   font-family: 'Space Mono', monospace;
   font-size: 12px;
+  transition: background-color 0.2s, color 0.2s;
 }
+
 
 
 /* ---------- Hero ---------- */
 .hero {
   position: relative;
   isolation: isolate;
-  min-height: 80vh;
+  min-height: calc(100vh - 66px);
+  min-height: calc(100svh - 66px);
   display: grid;
   place-items: center;
   overflow: hidden;
@@ -193,6 +230,24 @@ h1, h2, h3 {
   background: var(--page-bg);
 }
 
+/* Fundos das seções acompanham o tema ativo. O hero fica azul-marinho. */
+#root,
+main,
+.page,
+.sobre,
+#sobre,
+.secao-portfolio,
+.contato-secao {
+  background-color: var(--page-bg);
+  color: var(--text-color);
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.hero {
+  background: var(--hero-bg);
+  color: #fff;
+}
+
 
 .selo {
   display: inline-block;
@@ -205,6 +260,7 @@ h1, h2, h3 {
   color: var(--night-300);
   margin-bottom: 24px;
 }
+
 .hero h1 { font-size: clamp(24px, 6vw, 56px); margin-bottom: 24px; }
 .hero p {
   font-family: 'Space Mono', monospace;
@@ -388,8 +444,9 @@ h1, h2, h3 {
     padding-bottom: 120px;
   }
 
-  .hero-onda {
-    height: 75px;
+   .hero-onda {
+    width: 100%;
+    height: 90px;
   }
 
   .secao-portfolio {
@@ -453,24 +510,8 @@ h1, h2, h3 {
 
 .sobre {
   color: var(--text-color);
-  background: var(--page-bg);
   transition: background-color 0.2s, color 0.2s;
 }
-
-.sobre-texto p.descricao {
-  color: var(--muted-color);
-}
-
-.cartao-pixel {
-  color: var(--text-color);
-  background-color: var(--card-bg);
-}
-
-.cartao-pixel img {
-  max-width: 100%;
-}
-
-
 
 .contact-form {
   width: min(100%, 560px);

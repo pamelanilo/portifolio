@@ -43,7 +43,7 @@ export default function Luna() {
     >
       <img
         key={versao}
-        src={lunaAnimada}
+        src={`${lunaAnimada}?v=${versao}`}
         alt=""
         draggable="false"
       />

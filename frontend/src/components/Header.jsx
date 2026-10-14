@@ -10,6 +10,15 @@ export default function Header() {
     () => localStorage.getItem('portfolio-language') || 'pt'
   )
 
+  const alternarTema = () => {
+  const temaAtual = document.documentElement.dataset.theme || theme
+  const novoTema = temaAtual === 'dark' ? 'light' : 'dark'
+
+  document.documentElement.dataset.theme = novoTema
+  localStorage.setItem('portfolio-theme', novoTema)
+  setTheme(novoTema)
+}
+
   useEffect(() => {
     document.documentElement.dataset.theme = theme
     localStorage.setItem('portfolio-theme', theme)
@@ -63,16 +72,14 @@ export default function Header() {
           <button
             className="btn-tema"
             type="button"
-            onClick={() => setTheme(
-              current => current === 'dark' ? 'light' : 'dark'
-            )}
-            aria-label={theme === 'dark'
-              ? 'Ativar tema claro'
-              : 'Ativar tema escuro'}
-            title={theme === 'dark'
-              ? 'Ativar tema claro'
-              : 'Ativar tema escuro'}
-          >
+            onClick={() => {
+              const nextTheme = theme === 'dark' ? 'light' : 'dark'
+
+              document.documentElement.dataset.theme = nextTheme
+              localStorage.setItem('portfolio-theme', nextTheme)
+              setTheme(nextTheme)
+            }}
+            aria-label={theme === 'dark' ? 'Ativar tema claro' : 'Ativar tema escuro'}>
             {theme === 'dark' ? '☀' : '☾'}
           </button>
 

@@ -1,7 +1,7 @@
 .sobre {
   --foto: clamp(130px, 20vw, 210px);
-
-  background: #fff;
+  background: var(--page-bg);
+  color: var(--text-color);
   padding: 0 24px 80px;
 }
 .sobre-grid {
@@ -18,7 +18,7 @@
   z-index: 2;
   width: var(--foto);
   height: var(--foto);
-  margin-top: 0;
+  margin-top: 90px;
   margin-bottom: 24px;
 }
 .foto-perfil img {
@@ -54,33 +54,40 @@
   font-size: 12px;
   font-weight: 700;
   letter-spacing: 0.1em;
-  color: var(--night-500);
+  color: var(--accent);
   margin-bottom: 12px;
 }
 .sobre-texto h2 { font-size: clamp(18px, 3.2vw, 28px); margin-bottom: 16px; }
-.sobre-texto p.descricao { line-height: 1.7; color: #334155; margin-bottom: 20px; }
-.link-seta {
+
+.sobre-texto p.descricao { 
+  line-height: 1.7; 
+  color: var(--muted-color); 
+  margin-bottom: 20px; }
+
+  .link-seta {
   font-family: 'Space Mono', monospace;
   font-size: 13px;
   font-weight: 700;
-  color: var(--night-600);
-  border-bottom: 2px solid var(--night-300);
+  color: var(--accent);
+  border-bottom: 2px solid var(--accent);
 }
-.link-seta:hover { color: var(--night-800); border-color: var(--night-800); }
 
-/* Cartão com grade e cantos, onde mora a personagem animada */
+.link-seta:hover { color: var(--text-color); border-color: var(--accent); }
+
 .cartao-pixel {
   position: relative;
   width: min(100%, 360px);
   padding: 32px;
-  background-color: #f8fafc;
+  color: var(--muted-color);
+  background-color: var(--card-bg);
   background-image:
     linear-gradient(to right, rgba(10, 17, 40, 0.07) 1px, transparent 1px),
     linear-gradient(to bottom, rgba(10, 17, 40, 0.07) 1px, transparent 1px);
   background-size: 20px 20px;
-  border: 2px solid var(--night-800);
-  box-shadow: 6px 6px 0 var(--night-800);
+  border: 2px solid var(--border-color);
+  box-shadow: 6px 6px 0 var(--border-color);
 }
+
 .cartao-pixel img {
   display: block;
   width: 100%;
@@ -149,6 +156,7 @@
   margin-top: 0;
   margin-bottom: 0;
   align-self: center;
+  
 }
 
 

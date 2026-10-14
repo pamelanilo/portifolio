@@ -65,7 +65,7 @@ export default function Home() {
         </svg>
       </section>
 
-      <div className="revelar-rolagem">
+      <div >
         <SobreResumo />
       </div>
 
