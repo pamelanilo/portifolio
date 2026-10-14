@@ -142,7 +142,18 @@
     align-items: start;
     justify-items: stretch;
   }
-  .foto-perfil { margin-top: calc(var(--foto) * -0.55); margin-bottom: 0; }
-  .sobre-texto { text-align: left; padding-top: 32px; }
-  .cartao-pixel { margin-top: 24px; }
+
+  .foto-perfil {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+
+  .sobre-texto {
+    text-align: left;
+    padding-top: 32px;
+  }
+
+  .cartao-pixel {
+    margin-top: 24px;
+  }
 }
