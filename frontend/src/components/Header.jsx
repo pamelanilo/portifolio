@@ -1,23 +1,95 @@
-import { Link, NavLink } from 'react-router-dom'
 
-export default function Header (){
-    return(
-        <header className="header">
-            <div className="header-inner">
-                <Link to = "/" className="logo">   
-                    <span className="logo-icone"></span>
-                        PAMELA.DEV
-                </Link>
+import { useEffect, useState } from 'react'
 
-                <nav className = "menu">
-                    <NavLink to="/sobre">/SOBRE</NavLink>
-                    <NavLink to="/projetos">/PROJETOS</NavLink>
-                    <NavLink to="/experiencias">/EXPERIENCIAS</NavLink>
-                    <NavLink to="/contato">/CONTATO</NavLink>
-                </nav>
+export default function Header() {
+  const [theme, setTheme] = useState(
+    () => localStorage.getItem('portfolio-theme') || 'dark'
+  )
 
-                <button className= "btn-idioma">PT | EN</button>
-            </div>
-        </header>
-    )
+  const [language, setLanguage] = useState(
+    () => localStorage.getItem('portfolio-language') || 'pt'
+  )
+
+  useEffect(() => {
+    document.documentElement.dataset.theme = theme
+    localStorage.setItem('portfolio-theme', theme)
+  }, [theme])
+
+  useEffect(() => {
+    document.documentElement.lang = language
+
+    document.querySelectorAll('[data-pt][data-en]').forEach((element) => {
+      element.textContent = element.getAttribute(`data-${language}`)
+    })
+
+    localStorage.setItem('portfolio-language', language)
+  }, [language])
+
+  return (
+    <header className="header">
+      <div className="header-inner">
+        <a href="/#inicio" className="logo">
+          <span className="logo-icone" aria-hidden="true" />
+          PAMELA.DEV
+        </a>
+
+        <nav className="menu" aria-label="Navegação principal">
+          <a href="/#sobre" data-pt="SOBRE" data-en="ABOUT">
+            SOBRE
+          </a>
+
+          <a href="/#projetos" data-pt="PROJETOS" data-en="PROJECTS">
+            PROJETOS
+          </a>
+
+          <a href="/#experiencias"
+             data-pt="EXPERIÊNCIAS"
+             data-en="EXPERIENCE">
+            EXPERIÊNCIAS
+          </a>
+
+          <a href="/#habilidades"
+             data-pt="HABILIDADES"
+             data-en="SKILLS">
+            HABILIDADES
+          </a>
+
+          <a href="/#contato" data-pt="CONTATO" data-en="CONTACT">
+            CONTATO
+          </a>
+        </nav>
+
+        <div className="header-controls">
+          <button
+            className="btn-tema"
+            type="button"
+            onClick={() => setTheme(
+              current => current === 'dark' ? 'light' : 'dark'
+            )}
+            aria-label={theme === 'dark'
+              ? 'Ativar tema claro'
+              : 'Ativar tema escuro'}
+            title={theme === 'dark'
+              ? 'Ativar tema claro'
+              : 'Ativar tema escuro'}
+          >
+            {theme === 'dark' ? '☀' : '☾'}
+          </button>
+
+          <button
+            className="btn-idioma"
+            type="button"
+            onClick={() => setLanguage(
+              current => current === 'pt' ? 'en' : 'pt'
+            )}
+            aria-label={language === 'pt'
+              ? 'Mudar para inglês'
+              : 'Switch to Portuguese'}
+          >
+            {language === 'pt' ? 'PT | EN' : 'EN | PT'}
+          </button>
+        </div>
+      </div>
+    </header>
+  )
 }
