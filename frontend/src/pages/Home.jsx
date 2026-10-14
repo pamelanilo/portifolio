@@ -1,57 +1,62 @@
 
-import { Link } from 'react-router-dom'
 import StarField from '../components/StarField'
 import SobreResumo from '../components/SobreResumo'
+import { useIdioma } from '../context/IdiomaContext'
 import ContactForm from '../components/ContactForm'
 
 const projetos = [
   {
-    nome: 'Portfólio pessoal',
-    descricao:
-      'Desenvolvimento de uma página pessoal para apresentar minha trajetória, meus projetos e minhas habilidades.',
+    nome: {
+      pt: 'Portfólio pessoal',
+      en: 'Personal portfolio',
+    },
+    descricao: {
+      pt: 'Desenvolvimento de uma página pessoal para apresentar minha trajetória, meus projetos e minhas habilidades.',
+      en: 'Development of a personal website to showcase my journey, projects, and skills.',
+    },
     tecnologias: ['React', 'JavaScript', 'CSS'],
     github: 'https://github.com/pamelanilo/portifolio',
   },
   {
-    nome: 'CRUD com PHP e MySQL',
-    descricao:
-      'Projeto acadêmico de cadastro, consulta, atualização e exclusão de registros em um banco de dados.',
+    nome: {
+      pt: 'CRUD com PHP e MySQL',
+      en: 'CRUD with PHP and MySQL',
+    },
+    descricao: {
+      pt: 'Projeto acadêmico de cadastro, consulta, atualização e exclusão de registros em um banco de dados.',
+      en: 'Academic project for creating, reading, updating, and deleting records in a database.',
+    },
     tecnologias: ['PHP', 'MySQL'],
     github: 'https://github.com/pamelanilo',
   },
 ]
 
 export default function Home() {
+  const { idioma } = useIdioma()
+  const ingles = idioma === 'en'
+
   return (
     <>
       <section className="hero" id="inicio">
         <StarField />
 
         <div className="hero-conteudo">
-          <div className="selo"
-            data-pt="PUC MINAS • ENGENHARIA DE SOFTWARE"
-            data-en="PUC MINAS • SOFTWARE ENGINEERING">
-            PUC MINAS • ENGENHARIA DE SOFTWARE
+          <div className="selo">
+            {ingles
+              ? 'PUC MINAS • SOFTWARE ENGINEERING'
+              : 'PUC MINAS • ENGENHARIA DE SOFTWARE'}
           </div>
 
-          <h1 data-pt="Bem-vindos!" data-en="Welcome!">
-            Bem-vindos!
-          </h1>
+          <h1>{ingles ? 'Welcome!' : 'Bem-vindos!'}</h1>
 
-          <p
-            data-pt="Transformando ideias em projetos com código."
-            data-en="Turning ideas into projects with code."
-          >
-            Transformando ideias em projetos com código.
+          <p>
+            {ingles
+              ? 'Turning ideas into projects with code.'
+              : 'Transformando ideias em projetos com código.'}
           </p>
 
-          <a
-            href="#sobre"
-            className="botao-pixel"
-            data-pt="CONHECER PERFIL"
-            data-en="MEET MY PROFILE"
-          >
-            CONHECER PERFIL
+          <a href="#sobre" className="botao-pixel">
+            {ingles ? 'MEET MY PROFILE' : 'CONHECER PERFIL'}
           </a>
         </div>
 
@@ -65,33 +70,33 @@ export default function Home() {
         </svg>
       </section>
 
-      <div >
+      <div>
         <SobreResumo />
       </div>
 
       <section className="secao-portfolio" id="projetos">
-        <p className="rotulo-secao">02 / PROJECTS</p>
+        <p className="rotulo-secao">
+          {ingles ? '02 / PROJECTS' : '02 / PROJETOS'}
+        </p>
 
-        <h2 data-pt="Meus projetos" data-en="My projects">
-          Meus projetos
-        </h2>
+        <h2>{ingles ? 'My projects' : 'Meus projetos'}</h2>
 
-        <p className="introducao-secao"
-          data-pt="Projetos que fazem parte da minha jornada de aprendizado."
-          data-en="Projects from my learning journey.">
-          Projetos que fazem parte da minha jornada de aprendizado.
+        <p className="introducao-secao">
+          {ingles
+            ? 'Projects from my learning journey.'
+            : 'Projetos que fazem parte da minha jornada de aprendizado.'}
         </p>
 
         <div className="grade-projetos">
           {projetos.map((projeto, index) => (
-            <article className="projeto-card" key={projeto.nome}>
+            <article className="projeto-card" key={projeto.nome.pt}>
               <span className="projeto-numero">
                 0{index + 1}
               </span>
 
-              <h3>{projeto.nome}</h3>
+              <h3>{projeto.nome[idioma]}</h3>
 
-              <p>{projeto.descricao}</p>
+              <p>{projeto.descricao[idioma]}</p>
 
               <div className="tecnologias">
                 {projeto.tecnologias.map((tecnologia) => (
@@ -105,7 +110,7 @@ export default function Home() {
                 rel="noreferrer"
                 className="link-projeto"
               >
-                VER NO GITHUB ↗
+                {ingles ? 'VIEW ON GITHUB ↗' : 'VER NO GITHUB ↗'}
               </a>
             </article>
           ))}
@@ -113,64 +118,69 @@ export default function Home() {
       </section>
 
       <section className="secao-portfolio" id="experiencias">
-        <p className="rotulo-secao">03 / EXPERIENCE</p>
+        <p className="rotulo-secao">
+          {ingles ? '03 / EXPERIENCE' : '03 / EXPERIÊNCIAS'}
+        </p>
 
-        <h2 data-pt="Minha trajetória" data-en="My journey">
-          Minha trajetória
-        </h2>
+        <h2>{ingles ? 'My journey' : 'Minha trajetória'}</h2>
 
         <div className="timeline">
           <article className="timeline-item">
             <span className="timeline-ponto" />
 
-            <p className="timeline-data">ATUAL</p>
+            <p className="timeline-data">
+              {ingles ? 'CURRENT' : 'ATUAL'}
+            </p>
 
-            <h3 data-pt="Suporte em TI"
-                data-en="IT Support">
-              Suporte em TI
-            </h3>
+            <h3>{ingles ? 'IT Support' : 'Suporte em TI'}</h3>
 
-            <p
-              data-pt="Experiência com atendimento técnico, acesso remoto, impressoras, configuração básica de computadores e apoio na resolução de problemas."
-              data-en="Experience with technical support, remote access, printers, basic computer configuration, and troubleshooting."
-            >
-              Experiência com atendimento técnico, acesso remoto,
-              impressoras, configuração básica de computadores e
-              apoio na resolução de problemas.
+            <p>
+              {ingles
+                ? 'Experience with technical support, remote access, printers, basic computer configuration, and troubleshooting.'
+                : 'Experiência com atendimento técnico, acesso remoto, impressoras, configuração básica de computadores e apoio na resolução de problemas.'}
             </p>
           </article>
 
           <article className="timeline-item">
             <span className="timeline-ponto" />
 
-            <p className="timeline-data">FORMAÇÃO</p>
+            <p className="timeline-data">
+              {ingles ? 'EDUCATION' : 'FORMAÇÃO'}
+            </p>
 
-            <h3 data-pt="Engenharia de Software"
-                data-en="Software Engineering">
-              Engenharia de Software
+            <h3>
+              {ingles ? 'Software Engineering' : 'Engenharia de Software'}
             </h3>
 
-            <p
-              data-pt="Formação acadêmica com foco em desenvolvimento de software, lógica, programação e construção de soluções."
-              data-en="Academic training focused on software development, logic, programming, and building solutions."
-            >
-              Formação acadêmica com foco em desenvolvimento de
-              software, lógica, programação e construção de soluções.
+            <p>
+              {ingles
+                ? 'Academic training focused on software development, logic, programming, and building solutions.'
+                : 'Formação acadêmica com foco em desenvolvimento de software, lógica, programação e construção de soluções.'}
             </p>
           </article>
         </div>
       </section>
 
       <section className="secao-portfolio" id="habilidades">
-        <p className="rotulo-secao">04 / SKILLS</p>
+        <p className="rotulo-secao">
+          {ingles ? '04 / SKILLS' : '04 / HABILIDADES'}
+        </p>
 
-        <h2 data-pt="Habilidades e tecnologias"
-            data-en="Skills and technologies">
-          Habilidades e tecnologias
+        <h2>
+          {ingles ? 'Skills and technologies' : 'Habilidades e tecnologias'}
         </h2>
 
         <div className="grade-habilidades">
-          {['Java', 'Python', 'JavaScript', 'React', 'PHP', 'SQL', 'Git', 'HTML & CSS'].map((item) => (
+          {[
+            'Java',
+            'Python',
+            'JavaScript',
+            'React',
+            'PHP',
+            'SQL',
+            'Git',
+            'HTML & CSS',
+          ].map((item) => (
             <div className="habilidade-card" key={item}>
               <span aria-hidden="true">&lt;/&gt;</span>
               {item}
@@ -179,43 +189,51 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="secao-portfolio contato-secao" id="contato">
-        <p className="rotulo-secao">05 / CONTACT</p>
+      <section
+        className="secao-portfolio contato-secao"
+        id="contato"
+      >
+        <p className="rotulo-secao">
+          {ingles ? '05 / CONTACT' : '05 / CONTATO'}
+        </p>
 
-        <h2 data-pt="Vamos conversar?"
-            data-en="Let's connect!">
-          Vamos conversar?
-        </h2>
+        <h2>{ingles ? "Let's connect!" : 'Vamos conversar?'}</h2>
 
-        <p
-          data-pt="Quer conhecer meus projetos ou conversar sobre oportunidades?"
-          data-en="Want to explore my projects or talk about opportunities?"
-        >
-          Quer conhecer meus projetos ou conversar sobre oportunidades?
+        <p>
+          {ingles
+            ? 'Want to explore my projects or talk about opportunities?'
+            : 'Quer conhecer meus projetos ou conversar sobre oportunidades?'}
         </p>
 
         <div className="contato-links">
-          <a href="https://github.com/pamelanilo"
-             target="_blank" rel="noreferrer">
+          <ContactForm />
+          <a
+            href="https://github.com/pamelanilo"
+            target="_blank"
+            rel="noreferrer"
+          >
             GitHub ↗
           </a>
 
-          <a href="https://www.linkedin.com/"
-             target="_blank" rel="noreferrer">
+          <a
+            href="https://www.linkedin.com/in/pamela-fernandes-nilo-747958244/"
+            target="_blank"
+            rel="noreferrer"
+          >
             LinkedIn ↗
           </a>
         </div>
 
         <p className="aviso-contato">
-          Personalize os links de contato com seus perfis reais.
+          {ingles
+            ? 'Update the contact links with your actual profiles.'
+            : 'Personalize os links de contato com seus perfis reais.'}
         </p>
 
         <a href="/#inicio" className="voltar-topo">
-        ↑ VOLTAR AO TOPO
-      </a>
+          {ingles ? '↑ BACK TO TOP' : '↑ VOLTAR AO TOPO'}
+        </a>
       </section>
     </>
   )
 }
-
-

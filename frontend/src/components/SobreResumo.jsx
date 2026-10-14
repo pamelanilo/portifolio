@@ -1,19 +1,29 @@
+
 import { Link } from 'react-router-dom'
 import './SobreResumo.css'
 import fotoPerfil from '../assets/foto-perfil.jpg'
 import useReveal from '../hooks/useReveal'
 import Luna from './Luna'
-
-
+import { useIdioma } from '../context/IdiomaContext'
 
 export default function SobreResumo() {
   const { ref, visible } = useReveal()
+  const { idioma } = useIdioma()
+  const ingles = idioma === 'en'
+
   return (
-    <section className={`sobre revelar ${visible ? 'visivel' : ''}`} id="sobre" ref={ref}
->
+    <section
+      className={`sobre revelar ${visible ? 'visivel' : ''}`}
+      id="sobre"
+      ref={ref}
+    >
       <div className="sobre-grid">
         <figure className="foto-perfil">
-          <img src={fotoPerfil} alt="Foto da Pamela" />
+          <img
+            src={fotoPerfil}
+            alt={ingles ? 'Photo of Pamela' : 'Foto da Pamela'}
+          />
+
           <figcaption className="foto-legenda">
             <svg
               viewBox="0 0 44 36"
@@ -26,17 +36,31 @@ export default function SobreResumo() {
               <path d="M40,30 C26,32 12,26 8,8" />
               <path d="M2,16 L8,6 L16,14" />
             </svg>
-            <span>EU!</span>
+
+            <span>{ingles ? 'ME!' : 'EU!'}</span>
           </figcaption>
         </figure>
 
         <div className="sobre-texto">
-          <p className="rotulo">01 / SOBRE MIM</p>
-          <h2>Olá, eu sou a Pamela!</h2>
-          <p className="descricao">
-            Sou estudante de Engenharia de Software e gosto de aprender construindo projetos.
+          <p className="rotulo">
+            {ingles ? '01 / ABOUT ME' : '01 / SOBRE MIM'}
           </p>
-          <Link to="/sobre" className="link-seta">Conheça minhas habilidades →</Link>
+
+          <h2>
+            {ingles ? "Hello, I'm Pamela!" : 'Olá, eu sou a Pamela!'}
+          </h2>
+
+          <p className="descricao">
+            {ingles
+              ? 'I am a Software Engineering student who enjoys learning by building projects.'
+              : 'Sou estudante de Engenharia de Software e gosto de aprender construindo projetos.'}
+          </p>
+
+          <Link to="/sobre" className="link-seta">
+            {ingles
+              ? 'Discover my skills →'
+              : 'Conheça minhas habilidades →'}
+          </Link>
         </div>
 
         <div className="cartao-pixel">

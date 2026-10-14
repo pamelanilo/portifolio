@@ -1,38 +1,28 @@
 
 import { useEffect, useState } from 'react'
+import { useIdioma } from '../context/IdiomaContext'
 
 export default function Header() {
   const [theme, setTheme] = useState(
     () => localStorage.getItem('portfolio-theme') || 'dark'
   )
 
-  const [language, setLanguage] = useState(
-    () => localStorage.getItem('portfolio-language') || 'pt'
-  )
+  const { idioma, alternarIdioma } = useIdioma()
+  const ingles = idioma === 'en'
 
-  const alternarTema = () => {
-  const temaAtual = document.documentElement.dataset.theme || theme
-  const novoTema = temaAtual === 'dark' ? 'light' : 'dark'
+  function alternarTema() {
+    const temaAtual = document.documentElement.dataset.theme || theme
+    const novoTema = temaAtual === 'dark' ? 'light' : 'dark'
 
-  document.documentElement.dataset.theme = novoTema
-  localStorage.setItem('portfolio-theme', novoTema)
-  setTheme(novoTema)
-}
+    document.documentElement.dataset.theme = novoTema
+    localStorage.setItem('portfolio-theme', novoTema)
+    setTheme(novoTema)
+  }
 
   useEffect(() => {
     document.documentElement.dataset.theme = theme
     localStorage.setItem('portfolio-theme', theme)
   }, [theme])
-
-  useEffect(() => {
-    document.documentElement.lang = language
-
-    document.querySelectorAll('[data-pt][data-en]').forEach((element) => {
-      element.textContent = element.getAttribute(`data-${language}`)
-    })
-
-    localStorage.setItem('portfolio-language', language)
-  }, [language])
 
   return (
     <header className="header">
@@ -42,58 +32,42 @@ export default function Header() {
           PAMELA.DEV
         </a>
 
-        <nav className="menu" aria-label="Navegação principal">
-          <a href="/#sobre" data-pt="SOBRE" data-en="ABOUT">
-            SOBRE
+        <nav
+          className="menu"
+          aria-label={ingles ? 'Main navigation' : 'Navegação principal'}
+        >
+          <a href="/#sobre">{ingles ? 'ABOUT' : 'SOBRE'}</a>
+          <a href="/#projetos">{ingles ? 'PROJECTS' : 'PROJETOS'}</a>
+          <a href="/#experiencias">
+            {ingles ? 'EXPERIENCE' : 'EXPERIÊNCIAS'}
           </a>
-
-          <a href="/#projetos" data-pt="PROJETOS" data-en="PROJECTS">
-            PROJETOS
-          </a>
-
-          <a href="/#experiencias"
-             data-pt="EXPERIÊNCIAS"
-             data-en="EXPERIENCE">
-            EXPERIÊNCIAS
-          </a>
-
-          <a href="/#habilidades"
-             data-pt="HABILIDADES"
-             data-en="SKILLS">
-            HABILIDADES
-          </a>
-
-          <a href="/#contato" data-pt="CONTATO" data-en="CONTACT">
-            CONTATO
-          </a>
+          <a href="/#habilidades">{ingles ? 'SKILLS' : 'HABILIDADES'}</a>
+          <a href="/#contato">{ingles ? 'CONTACT' : 'CONTATO'}</a>
         </nav>
 
         <div className="header-controls">
           <button
             className="btn-tema"
             type="button"
-            onClick={() => {
-              const nextTheme = theme === 'dark' ? 'light' : 'dark'
-
-              document.documentElement.dataset.theme = nextTheme
-              localStorage.setItem('portfolio-theme', nextTheme)
-              setTheme(nextTheme)
-            }}
-            aria-label={theme === 'dark' ? 'Ativar tema claro' : 'Ativar tema escuro'}>
+            onClick={alternarTema}
+            aria-label={
+              theme === 'dark'
+                ? (ingles ? 'Enable light theme' : 'Ativar tema claro')
+                : (ingles ? 'Enable dark theme' : 'Ativar tema escuro')
+            }
+          >
             {theme === 'dark' ? '☀' : '☾'}
           </button>
 
           <button
             className="btn-idioma"
             type="button"
-            onClick={() => setLanguage(
-              current => current === 'pt' ? 'en' : 'pt'
-            )}
-            aria-label={language === 'pt'
-              ? 'Mudar para inglês'
-              : 'Switch to Portuguese'}
+            onClick={alternarIdioma}
+            aria-label={
+              ingles ? 'Switch to Portuguese' : 'Mudar para inglês'
+            }
           >
-            {language === 'pt' ? 'PT | EN' : 'EN | PT'}
+            {ingles ? 'EN | PT' : 'PT | EN'}
           </button>
         </div>
       </div>
