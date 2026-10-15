@@ -38,7 +38,7 @@ export default function SobreResumo() {
           <p className="rotulo">{ingles ? '01 / ABOUT ME' : '01 / SOBRE MIM'}</p>
           <h2>{ingles ? "Hello, I'm Pamela!" : 'Olá, eu sou a Pamela!'}</h2>
           <p className="descricao">{ingles? 'I am a Software Engineering student who enjoys learning by building projects.': 'Sou estudante de Engenharia de Software e gosto de aprender construindo projetos.'}</p>
-          <Link to="/sobre" className="link-seta">{ingles ? 'Explore my skills →' : 'Conheça minhas habilidades →'}</Link>
+          <Link to="/sobre" className="link-seta">{ingles ? 'A little more about me →' : 'Um pouco mais sobre mim →'}</Link>
         </div>
 
         <div className="cartao-pixel">

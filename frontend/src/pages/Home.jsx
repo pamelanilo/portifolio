@@ -9,42 +9,35 @@ import { FaWhatsapp, FaGithub, FaLinkedinIn } from 'react-icons/fa'
 const projetos = [
   {
     nome: {
-      pt: 'Portfólio pessoal',
-      en: 'Personal portfolio',
+      pt: 'Programação Modular — Formas Geométricas',
+      en: 'Modular Programming — Geometric Shapes',
     },
     descricao: {
-      pt: 'Desenvolvimento de uma página pessoal para apresentar minha trajetória, meus projetos e minhas habilidades.',
-      en: 'Development of a personal website to showcase my journey, projects, and skills.',
+      pt: 'Projeto de programação modular relacionado a formas geométricas. Confira o código-fonte para conhecer sua implementação.',
+      en: 'A modular programming project involving geometric shapes. Explore the source code to learn more about its implementation.',
     },
-    tecnologias: ['React', 'JavaScript', 'CSS'],
-    github: 'https://github.com/pamelanilo/portifolio',
+    tecnologias: ['Programação Modular', 'GitHub'],
+    github: 'https://github.com/pamelanilo/ProgMod_FormasGeometricas',
+    imagem: '/images/projetos/formas-geometricas.gif',
   },
   {
     nome: {
-      pt: 'CRUD com PHP e MySQL',
-      en: 'CRUD with PHP and MySQL',
+      pt: 'API REST — Clima',
+      en: 'Weather REST API',
     },
     descricao: {
-      pt: 'Projeto acadêmico de cadastro, consulta, atualização e exclusão de registros em um banco de dados.',
-      en: 'Academic project for creating, reading, updating, and deleting records in a database.',
+      pt: 'Projeto relacionado a uma API REST de clima. Acesse o repositório para conhecer os recursos e detalhes da implementação.',
+      en: 'A project involving a weather REST API. Visit the repository to explore its features and implementation details.',
     },
-    tecnologias: ['PHP', 'MySQL'],
-    github: 'https://github.com/pamelanilo',
+    tecnologias: ['API REST', 'GitHub'],
+    github: 'https://github.com/pamelanilo/API-REST-clima',
+    imagem: '/images/projetos/api-rest-clima.gif',
   },
 ]
 
 export default function Home() {
   const { idioma } = useIdioma()
   const ingles = idioma === 'en'
-
-  const habilidades = [
-    'Java',
-    'Python',
-    'JavaScript',
-    'React',
-    'Git',
-    'HTML & CSS',
-  ]
 
   return (
     <>
@@ -103,14 +96,14 @@ export default function Home() {
 
         <div className="grade-projetos">
           {projetos.map((projeto, index) => (
-            <article className="projeto-card" key={projeto.nome.pt}>
+            <article className="projeto-card" key={projeto.github}>
               <span className="projeto-numero">
-                0{index + 1}
+                {String(index + 1).padStart(2, '0')}
               </span>
 
-              <h3>{projeto.nome[idioma]}</h3>
+              <h3>{projeto.nome[idioma] || projeto.nome.pt}</h3>
 
-              <p>{projeto.descricao[idioma]}</p>
+              <p>{projeto.descricao[idioma] || projeto.descricao.pt}</p>
 
               <div className="tecnologias">
                 {projeto.tecnologias.map((tecnologia) => (
@@ -193,7 +186,6 @@ export default function Home() {
       </section>
 
       {/* HABILIDADES */}
-   
       <section className="secao-portfolio" id="habilidades">
         <p className="rotulo-secao">
           {ingles ? '04 / SKILLS' : '04 / HABILIDADES'}
@@ -224,12 +216,8 @@ export default function Home() {
         </div>
       </section>
 
-
       {/* CONTATO */}
-      <section
-        className="secao-portfolio contato-secao"
-        id="contato"
-      >
+      <section className="secao-portfolio contato-secao" id="contato">
         <p className="rotulo-secao">
           {ingles ? '05 / CONTACT' : '05 / CONTATO'}
         </p>

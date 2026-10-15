@@ -56,30 +56,14 @@ const SKILLS = [
     color: '#6db33f',
     link: 'https://spring.io/projects/spring-boot',
   },
-  {
-    name: 'Node.js',
-    icon: SiNodedotjs,
-    color: '#5fa04e',
-    link: 'https://nodejs.org/',
-  },
+
   {
     name: 'Git',
     icon: SiGit,
     color: '#f05032',
     link: 'https://git-scm.com/',
   },
-  {
-    name: 'PHP',
-    icon: SiPhp,
-    color: '#777bb4',
-    link: 'https://www.php.net/',
-  },
-  {
-    name: 'MySQL',
-    icon: SiMysql,
-    color: '#4479a1',
-    link: 'https://www.mysql.com/',
-  },
+
 ]
 
 export default SKILLS
