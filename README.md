@@ -29,33 +29,33 @@ O menu fixo leva a cada seção: **Sobre · Projetos · Experiências · Habilid
 ### Home
 
 **Hero**
-![Wireframe Hero](frontend\public\wireframes\01-home-hero.svg)
+![Wireframe Hero](frontend/public/wireframes/01-home-hero.svg)
 
 **Sobre mim (resumo)**
-![Wireframe Sobre resumo](frontend\public\wireframes\02-home-sobre.svg)
+![Wireframe Sobre resumo](frontend/public/wireframes/02-home-sobre.svg)
 
 **Projetos em destaque**
-![Wireframe Projetos na Home](frontend\public\wireframe\03-home-projetos.svg)
+![Wireframe Projetos na Home](frontend/public/wireframe/03-home-projetos.svg)
 
 **Experiências**
-![Wireframe Experiências na Home](frontend\public\wireframes\04-home-experiencias.svg)
+![Wireframe Experiências na Home](frontend/public/wireframes/04-home-experiencias.svg)
 
 **Habilidades**
-![Wireframe Habilidades](frontend\public\wireframes\05-home-habilidades.svg)
+![Wireframe Habilidades](frontend/public/wireframes/05-home-habilidades.svg)
 
 **Contato**
-![Wireframe Contato](frontend\public\wireframes\06-home-contato.svg)
+![Wireframe Contato](frontend/public/wireframes/06-home-contato.svg)
 
 ### Páginas internas
 
 **/projetos**
-![Wireframe página Projetos](frontend\public\wireframes\07-pagina-projetos.svg)
+![Wireframe página Projetos](frontend/public/wireframes/07-pagina-projetos.svg)
 
 **/sobre**
-![Wireframe página Sobre](frontend\public\wireframes\08-pagina-sobre.svg)
+![Wireframe página Sobre](frontend/public/wireframes/08-pagina-sobre.svg)
 
 **/experiencias**
-![Wireframe página Experiências](frontend\public\wireframes\09-pagina-experiencias.svg)
+![Wireframe página Experiências](frontend/public/wireframes/09-pagina-experiencias.svg)
 
 ---
 
