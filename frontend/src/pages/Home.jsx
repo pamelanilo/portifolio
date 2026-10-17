@@ -193,8 +193,8 @@ export default function Home() {
 
         <h2>
           {ingles
-            ? 'Skills and technologies'
-            : 'Habilidades e tecnologias'}
+            ? 'Technologies'
+            : 'Tecnologias'}
         </h2>
 
         <p className="introducao-secao">
@@ -252,7 +252,7 @@ export default function Home() {
           </a>
 
           <a
-            href="https://www.linkedin.com/in/SEU-PERFIL/"
+            href="https://www.linkedin.com/in/pamela-fernandes-nilo-747958244/"
             target="_blank"
             rel="noreferrer"
             aria-label="Ver LinkedIn"
