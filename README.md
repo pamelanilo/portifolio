@@ -1,7 +1,7 @@
 #  PAMELA.DEV — Portfólio Profissional
 
 > Laboratório 01 · DIAW (Desenvolvimento e Integração de Aplicações Web)
-> Engenharia de Software · PUC Minas · Professor: João Paulo Carneiro Aramuni
+> Engenharia de Software · PUC Minas · Professor: João Paulo Aramuni
 
 🔗 **Site publicado:** https://portifolio-pamela.vercel.app/
 
